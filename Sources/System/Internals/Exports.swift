@@ -20,6 +20,8 @@ import Glibc
 #elseif os(Windows)
 import CSystem
 import ucrt
+#elseif canImport(WASILibc)
+import WASILibc
 #else
 #error("Unsupported Platform")
 #endif
@@ -45,10 +47,15 @@ internal var system_errno: CInt {
     _ = ucrt._set_errno(newValue)
   }
 }
-#else
+#elseif canImport(Glibc)
 internal var system_errno: CInt {
   get { Glibc.errno }
   set { Glibc.errno = newValue }
+}
+#elseif canImport(WASILibc)
+internal var system_errno: CInt {
+  get { WASILibc.errno }
+  set { WASILibc.errno = newValue }
 }
 #endif
 

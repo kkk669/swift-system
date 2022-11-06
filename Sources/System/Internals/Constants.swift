@@ -18,6 +18,109 @@ import Glibc
 #elseif os(Windows)
 import CSystem
 import ucrt
+#elseif canImport(WASILibc)
+import WASILibc
+
+@usableFromInline let E2BIG: Int32 = 1
+@usableFromInline let EACCES: Int32 = 2
+@usableFromInline let EADDRINUSE: Int32 = 3
+@usableFromInline let EADDRNOTAVAIL: Int32 = 4
+@usableFromInline let EAFNOSUPPORT: Int32 = 5
+@usableFromInline let EAGAIN: Int32 = 6
+@usableFromInline let EALREADY: Int32 = 7
+@usableFromInline let EBADF: Int32 = 8
+@usableFromInline let EBADMSG: Int32 = 9
+@usableFromInline let EBUSY: Int32 = 10
+@usableFromInline let ECANCELED: Int32 = 11
+@usableFromInline let ECHILD: Int32 = 12
+@usableFromInline let ECONNABORTED: Int32 = 13
+@usableFromInline let ECONNREFUSED: Int32 = 14
+@usableFromInline let ECONNRESET: Int32 = 15
+@usableFromInline let EDEADLK: Int32 = 16
+@usableFromInline let EDESTADDRREQ: Int32 = 17
+@usableFromInline let EDOM: Int32 = 18
+@usableFromInline let EDQUOT: Int32 = 19
+@usableFromInline let EEXIST: Int32 = 20
+@usableFromInline let EFAULT: Int32 = 21
+@usableFromInline let EFBIG: Int32 = 22
+@usableFromInline let EHOSTUNREACH: Int32 = 23
+@usableFromInline let EIDRM: Int32 = 24
+@usableFromInline let EILSEQ: Int32 = 25
+@usableFromInline let EINPROGRESS: Int32 = 26
+@usableFromInline let EINTR: Int32 = 27
+@usableFromInline let EINVAL: Int32 = 28
+@usableFromInline let EIO: Int32 = 29
+@usableFromInline let EISCONN: Int32 = 30
+@usableFromInline let EISDIR: Int32 = 31
+@usableFromInline let ELOOP: Int32 = 32
+@usableFromInline let EMFILE: Int32 = 33
+@usableFromInline let EMLINK: Int32 = 34
+@usableFromInline let EMSGSIZE: Int32 = 35
+@usableFromInline let EMULTIHOP: Int32 = 36
+@usableFromInline let ENAMETOOLONG: Int32 = 37
+@usableFromInline let ENETDOWN: Int32 = 38
+@usableFromInline let ENETRESET: Int32 = 39
+@usableFromInline let ENETUNREACH: Int32 = 41
+@usableFromInline let ENFILE: Int32 = 41
+@usableFromInline let ENOBUFS: Int32 = 42
+@usableFromInline let ENODEV: Int32 = 43
+@usableFromInline let ENOENT: Int32 = 44
+@usableFromInline let ENOEXEC: Int32 = 45
+@usableFromInline let ENOLCK: Int32 = 46
+@usableFromInline let ENOLINK: Int32 = 47
+@usableFromInline let ENOMEM: Int32 = 48
+@usableFromInline let ENOMSG: Int32 = 49
+@usableFromInline let ENOPROTOOPT: Int32 = 50
+@usableFromInline let ENOSPC: Int32 = 51
+@usableFromInline let ENOSYS: Int32 = 52
+@usableFromInline let ENOTCONN: Int32 = 53
+@usableFromInline let ENOTDIR: Int32 = 54
+@usableFromInline let ENOTEMPTY: Int32 = 55
+@usableFromInline let ENOTRECOVERABLE: Int32 = 56
+@usableFromInline let ENOTSOCK: Int32 = 57
+@usableFromInline let ENOTSUP: Int32 = 58
+@usableFromInline let ENOTTY: Int32 = 59
+@usableFromInline let ENXIO: Int32 = 60
+@usableFromInline let EOVERFLOW: Int32 = 61
+@usableFromInline let EOWNERDEAD: Int32 = 62
+@usableFromInline let EPERM: Int32 = 63
+@usableFromInline let EPIPE: Int32 = 64
+@usableFromInline let EPROTO: Int32 = 65
+@usableFromInline let EPROTONOSUPPORT: Int32 = 66
+@usableFromInline let EPROTOTYPE: Int32 = 67
+@usableFromInline let ERANGE: Int32 = 68
+@usableFromInline let EROFS: Int32 = 69
+@usableFromInline let ESPIPE: Int32 = 70
+@usableFromInline let ESRCH: Int32 = 71
+@usableFromInline let ESTALE: Int32 = 72
+@usableFromInline let ETIMEDOUT: Int32 = 73
+@usableFromInline let ETXTBSY: Int32 = 74
+@usableFromInline let EXDEV: Int32 = 75
+@usableFromInline let ENOTCAPABLE: Int32 = 76
+@usableFromInline let EOPNOTSUPP: Int32 = ENOTSUP
+@usableFromInline let EWOULDBLOCK: Int32 = EAGAIN
+@usableFromInline let ENODATA: Int32 = 9919
+@usableFromInline let ENOSR: Int32 = 9922
+@usableFromInline let ENOSTR: Int32 = 9924
+@usableFromInline let ETIME: Int32 = 9935
+@usableFromInline let O_APPEND: Int32 = 1 << 0
+@usableFromInline let O_DSYNC: Int32 = 1 << 1
+@usableFromInline let O_NONBLOCK: Int32 = 1 << 2
+@usableFromInline let O_RSYNC: Int32 = 1 << 3
+@usableFromInline let O_SYNC: Int32 = 1 << 4
+@usableFromInline let O_CREAT: Int32 = (1 << 0) << 12
+@usableFromInline let O_DIRECTORY: Int32 = (1 << 1) << 12
+@usableFromInline let O_EXCL: Int32 = (1 << 2) << 12
+@usableFromInline let O_TRUNC: Int32 = (1 << 3) << 12
+@usableFromInline let O_NOFOLLOW: Int32 = 0x01000000
+@usableFromInline let O_EXEC: Int32 = 0x02000000
+@usableFromInline let O_RDONLY: Int32 = 0x04000000
+@usableFromInline let O_SEARCH: Int32 = 0x08000000
+@usableFromInline let O_WRONLY: Int32 = 0x10000000
+@usableFromInline let O_ACCMODE: Int32 = O_EXEC | O_RDWR | O_SEARCH
+@usableFromInline let SEEK_SET : Int32 = 0
+@usableFromInline let SEEK_CUR : Int32 = 1
+@usableFromInline let SEEK_END: Int32 = 2
 #else
 #error("Unsupported Platform")
 #endif
@@ -70,7 +173,7 @@ internal var _EACCES: CInt { EACCES }
 @_alwaysEmitIntoClient
 internal var _EFAULT: CInt { EFAULT }
 
-#if !os(Windows)
+#if !os(Windows) && !os(WASI)
 @_alwaysEmitIntoClient
 internal var _ENOTBLK: CInt { ENOTBLK }
 #endif
@@ -164,6 +267,7 @@ internal var _ENOPROTOOPT: CInt { ENOPROTOOPT }
 @_alwaysEmitIntoClient
 internal var _EPROTONOSUPPORT: CInt { EPROTONOSUPPORT }
 
+#if !os(WASI)
 @_alwaysEmitIntoClient
 internal var _ESOCKTNOSUPPORT: CInt {
 #if os(Windows)
@@ -172,6 +276,7 @@ internal var _ESOCKTNOSUPPORT: CInt {
   return ESOCKTNOSUPPORT
 #endif
 }
+#endif
 
 @_alwaysEmitIntoClient
 internal var _ENOTSUP: CInt {
@@ -182,6 +287,7 @@ internal var _ENOTSUP: CInt {
 #endif
 }
 
+#if !os(WASI)
 @_alwaysEmitIntoClient
 internal var _EPFNOSUPPORT: CInt {
 #if os(Windows)
@@ -190,6 +296,7 @@ internal var _EPFNOSUPPORT: CInt {
   return EPFNOSUPPORT
 #endif
 }
+#endif
 
 @_alwaysEmitIntoClient
 internal var _EAFNOSUPPORT: CInt { EAFNOSUPPORT }
@@ -224,6 +331,7 @@ internal var _EISCONN: CInt { EISCONN }
 @_alwaysEmitIntoClient
 internal var _ENOTCONN: CInt { ENOTCONN }
 
+#if !os(WASI)
 @_alwaysEmitIntoClient
 internal var _ESHUTDOWN: CInt {
 #if os(Windows)
@@ -232,7 +340,9 @@ internal var _ESHUTDOWN: CInt {
   return ESHUTDOWN
 #endif
 }
+#endif
 
+#if !os(WASI)
 @_alwaysEmitIntoClient
 internal var _ETOOMANYREFS: CInt {
 #if os(Windows)
@@ -241,6 +351,7 @@ internal var _ETOOMANYREFS: CInt {
   return ETOOMANYREFS
 #endif
 }
+#endif
 
 @_alwaysEmitIntoClient
 internal var _ETIMEDOUT: CInt { ETIMEDOUT }
@@ -254,6 +365,7 @@ internal var _ELOOP: CInt { ELOOP }
 @_alwaysEmitIntoClient
 internal var _ENAMETOOLONG: CInt { ENAMETOOLONG }
 
+#if !os(WASI)
 @_alwaysEmitIntoClient
 internal var _EHOSTDOWN: CInt {
 #if os(Windows)
@@ -262,6 +374,7 @@ internal var _EHOSTDOWN: CInt {
   return EHOSTDOWN
 #endif
 }
+#endif
 
 @_alwaysEmitIntoClient
 internal var _EHOSTUNREACH: CInt { EHOSTUNREACH }
@@ -274,6 +387,7 @@ internal var _ENOTEMPTY: CInt { ENOTEMPTY }
 internal var _EPROCLIM: CInt { EPROCLIM }
 #endif
 
+#if !os(WASI)
 @_alwaysEmitIntoClient
 internal var _EUSERS: CInt {
 #if os(Windows)
@@ -282,6 +396,7 @@ internal var _EUSERS: CInt {
   return EUSERS
 #endif
 }
+#endif
 
 @_alwaysEmitIntoClient
 internal var _EDQUOT: CInt {
@@ -301,6 +416,7 @@ internal var _ESTALE: CInt {
 #endif
 }
 
+#if !os(WASI)
 @_alwaysEmitIntoClient
 internal var _EREMOTE: CInt {
 #if os(Windows)
@@ -309,6 +425,7 @@ internal var _EREMOTE: CInt {
   return EREMOTE
 #endif
 }
+#endif
 
 #if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
 @_alwaysEmitIntoClient
@@ -474,9 +591,11 @@ internal var _O_EXLOCK: CInt { O_EXLOCK }
 #endif
 
 #if !os(Windows)
+#if !os(WASI)
 // TODO: API?
 @_alwaysEmitIntoClient
 internal var _O_ASYNC: CInt { O_ASYNC }
+#endif
 
 @_alwaysEmitIntoClient
 internal var _O_NOFOLLOW: CInt { O_NOFOLLOW }

@@ -22,6 +22,8 @@ import Glibc
 #elseif os(Windows)
 import CSystem
 import ucrt
+#elseif canImport(WASILibc)
+import WASILibc
 #else
 #error("Unsupported Platform")
 #endif

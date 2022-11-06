@@ -229,7 +229,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @available(*, unavailable, renamed: "badAddress")
   public static var EFAULT: Errno { badAddress }
 
-#if !os(Windows)
+#if !os(Windows) && !os(WASI)
   /// Not a block device.
   ///
   /// You attempted a block device operation on a nonblock device or file.
@@ -621,6 +621,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @available(*, unavailable, renamed: "protocolNotSupported")
   public static var EPROTONOSUPPORT: Errno { protocolNotSupported }
 
+#if !os(WASI)
   /// Socket type not supported.
   ///
   /// Support for the socket type hasn't been configured into the system
@@ -633,6 +634,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @_alwaysEmitIntoClient
   @available(*, unavailable, renamed: "socketTypeNotSupported")
   public static var ESOCKTNOSUPPORT: Errno { socketTypeNotSupported }
+#endif
 
   /// Not supported.
   ///
@@ -647,6 +649,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @available(*, unavailable, renamed: "notSupported")
   public static var ENOTSUP: Errno { notSupported }
 
+#if !os(WASI)
   /// Protocol family not supported.
   ///
   /// The protocol family hasn't been configured into the system
@@ -659,6 +662,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @_alwaysEmitIntoClient
   @available(*, unavailable, renamed: "protocolFamilyNotSupported")
   public static var EPFNOSUPPORT: Errno { protocolFamilyNotSupported }
+#endif
 
   /// The address family isn't supported by the protocol family.
   ///
@@ -805,6 +809,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @available(*, unavailable, renamed: "socketNotConnected")
   public static var ENOTCONN: Errno { socketNotConnected }
 
+#if !os(WASI)
   /// Can't send after socket shutdown.
   ///
   /// A request to send data wasn't permitted
@@ -818,6 +823,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @_alwaysEmitIntoClient
   @available(*, unavailable, renamed: "socketShutdown")
   public static var ESHUTDOWN: Errno { socketShutdown }
+#endif
 
   /// Operation timed out.
   ///
@@ -874,6 +880,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @available(*, unavailable, renamed: "fileNameTooLong")
   public static var ENAMETOOLONG: Errno { fileNameTooLong }
 
+#if !os(WASI)
   /// The host is down.
   ///
   /// A socket operation failed because the destination host was down.
@@ -885,6 +892,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @_alwaysEmitIntoClient
   @available(*, unavailable, renamed: "hostIsDown")
   public static var EHOSTDOWN: Errno { hostIsDown }
+#endif
 
   /// No route to host.
   ///
@@ -923,6 +931,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   public static var EPROCLIM: Errno { tooManyProcesses }
 #endif
 
+#if !os(WASI)
   /// Too many users.
   ///
   /// The quota system ran out of table entries.
@@ -934,6 +943,7 @@ public struct Errno: RawRepresentable, Error, Hashable, Codable {
   @_alwaysEmitIntoClient
   @available(*, unavailable, renamed: "tooManyUsers")
   public static var EUSERS: Errno { tooManyUsers }
+#endif
 
   /// Disk quota exceeded.
   ///
@@ -1393,6 +1403,7 @@ extension Errno {
   @available(*, unavailable, renamed: "wouldBlock")
   public static var EWOULDBLOCK: Errno { wouldBlock }
 
+#if !os(WASI)
   /// Too many references: can't splice.
   ///
   /// The corresponding C error is `ETOOMANYREFS`.
@@ -1412,6 +1423,7 @@ extension Errno {
   @_alwaysEmitIntoClient
   @available(*, unavailable, renamed: "tooManyRemoteLevels")
   public static var EREMOTE: Errno { tooManyRemoteLevels }
+#endif
 
 #if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
   /// No such policy registered.

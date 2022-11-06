@@ -309,6 +309,7 @@ extension FileDescriptor {
       retryOnInterrupt: retryOnInterrupt)
   }
 
+#if !os(WASI)
   /// Duplicate this file descriptor and return the newly created copy.
   ///
   /// - Parameters:
@@ -370,9 +371,10 @@ extension FileDescriptor {
   public func dup2() throws -> FileDescriptor {
     fatalError("Not implemented")
   }
+#endif
 }
 
-#if !os(Windows)
+#if !os(Windows) && !os(WASI)
 /*System 1.1.0, @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)*/
 extension FileDescriptor {
   /// Create a pipe, a unidirectional data channel which can be used for interprocess communication.

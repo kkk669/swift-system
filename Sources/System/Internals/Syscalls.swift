@@ -13,6 +13,8 @@ import Darwin
 import Glibc
 #elseif os(Windows)
 import ucrt
+#elseif canImport(WASILibc)
+import WASILibc
 #else
 #error("Unsupported Platform")
 #endif
@@ -102,6 +104,7 @@ internal func system_pwrite(
   return pwrite(fd, buf, nbyte, offset)
 }
 
+#if !os(WASI)
 internal func system_dup(_ fd: Int32) -> Int32 {
   #if ENABLE_MOCKING
   if mockingEnabled { return _mock(fd) }
@@ -115,8 +118,9 @@ internal func system_dup2(_ fd: Int32, _ fd2: Int32) -> Int32 {
   #endif
   return dup2(fd, fd2)
 }
+#endif
 
-#if !os(Windows)
+#if !os(Windows) && !os(WASI)
 internal func system_pipe(_ fds: UnsafeMutablePointer<Int32>) -> CInt {
 #if ENABLE_MOCKING
   if mockingEnabled { return _mock(fds) }
