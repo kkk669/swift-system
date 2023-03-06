@@ -1,7 +1,7 @@
 /*
  This source file is part of the Swift System open source project
 
- Copyright (c) 2020 Apple Inc. and the Swift System project authors
+ Copyright (c) 2020 - 2021 Apple Inc. and the Swift System project authors
  Licensed under Apache License v2.0 with Runtime Library Exception
 
  See https://swift.org/LICENSE.txt for license information
@@ -67,7 +67,10 @@ internal func system_strerror(_ __errnum: Int32) -> UnsafeMutablePointer<Int8>! 
   strerror(__errnum)
 }
 
-internal func system_strlen(_ s: UnsafePointer<Int8>) -> Int {
+internal func system_strlen(_ s: UnsafePointer<CChar>) -> Int {
+  strlen(s)
+}
+internal func system_strlen(_ s: UnsafeMutablePointer<CChar>) -> Int {
   strlen(s)
 }
 
@@ -83,6 +86,16 @@ internal func system_platform_strlen(_ s: UnsafePointer<CInterop.PlatformChar>) 
   #else
   return strlen(s)
   #endif
+}
+
+// memset for raw buffers
+// FIXME: Do we really not have something like this in the stdlib already?
+internal func system_memset(
+  _ buffer: UnsafeMutableRawBufferPointer,
+  to byte: UInt8
+) {
+  guard buffer.count > 0 else { return }
+  memset(buffer.baseAddress!, CInt(byte), buffer.count)
 }
 
 // Interop between String and platfrom string
